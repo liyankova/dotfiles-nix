@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  Enable unfree packages (required for NVIDIA drivers)
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.nvidia.acceptLicense = true;
+  # boot.kernelPackages = pkgs.linuxPackages_lts;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -34,7 +35,7 @@
   };
 
   # Load kernel modules
-  boot.kernelModules = [ "nvidia" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  # boot.kernelModules = [ "nvidia" ];
+  # boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 }
 
