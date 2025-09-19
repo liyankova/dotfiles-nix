@@ -52,11 +52,11 @@
         inherit inputs; 
 	user = userConfigurations.liyan;
 	host = systemConfigurations.laptop-hp;
-	pkgsUnstable = pkgsUnstableFor systemConfigurations.laptop.system;
+	pkgsUnstable = pkgsUnstableFor systemConfigurations."laptop-hp".system;
       };
 
       modules = [
-        ./nixos/hosts/laptop
+        ./nixos/hosts/laptop-hp
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
