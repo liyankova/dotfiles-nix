@@ -7,7 +7,7 @@
       ../../modules/system/bootloader.nix
       ../../modules/system/core.nix
       ../../modules/system/networking.nix
-
+      ../../modules/desktop/thunar.nix
       # Modul Hardware
       ../../modules/hardware/nvidia.nix
       ../../modules/services/audio.nix

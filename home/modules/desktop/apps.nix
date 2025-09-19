@@ -14,10 +14,11 @@
     krita
     gimp
     inkscape
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-vcs-plugin
-    xfce.thunar-archive-plugin
+    # xfce.thunar
+    # xfce.thunar-volman
+    # xfce.thunar-vcs-plugin
+    # xfce.thunar-archive-plugin
+    # xfce.thunar-media-tags-plugin
     # Communication (using unstable for latest versions)
     # (pkgs.unstable.discord)
     # (pkgs.unstable.slack)
@@ -25,5 +26,4 @@
     # (pkgs.unstable.zoom-us)
   ];
 
-  programs.firefox.enable = true;
 }

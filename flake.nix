@@ -60,13 +60,17 @@
       };
 
       modules = [
-        ./nixos/hosts/laptop-hp
+        # ({ pkgs, ... }: {
+        #   nixpkgs.overlays = [ (import ./overlays/default.nix { pkgsUnstable = pkgsUnstable; }) ];
+        # })
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.liyan = import ./home/users/liyan.nix;
         }
+	./nixos/hosts/laptop-hp
+
         # ({ config, pkgs, ... }: {
         #   nixpkgs.overlays = [
         #     (final: prev: {
@@ -78,11 +82,13 @@
       ];
     };
     homeConfigurations."liyan" = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsUnstableFor "x86_64-linux"; 
+      pkgs = pkgsUnstableFor "x86_64-linux";
+      overlays = [ (import ./overlays/default.nix { pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages."x86_64-linux"; }) ];
       extraSpecialArgs = {
         inherit inputs;
         user = userConfigurations.liyan;
         host = systemConfigurations."laptop-hp";
+        pkgsUnstable = inputs.nixpkgs-unstable.legacyPackages."x86_64-linux";
       };
       modules = [ ./home/users/liyan.nix ];
     };
