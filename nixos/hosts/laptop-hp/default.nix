@@ -4,15 +4,22 @@
   imports =
     [ 
       ./hardware-configuration.nix
+
+      # System
       ../../modules/system/bootloader.nix
       ../../modules/system/core.nix
       ../../modules/system/networking.nix
-      ../../modules/desktop/thunar.nix
+
       # Modul Hardware
       ../../modules/hardware/nvidia.nix
+
+      # Services
       ../../modules/services/audio.nix
+      
+      # Desktop
       ../../modules/desktop/sddm.nix
       ../../modules/desktop/hyprland.nix
+      ../../modules/desktop/thunar.nix
       # (lib.mkIf host.hasNvidia ../../modules/hardware/nvidia.nix)
     ];
 

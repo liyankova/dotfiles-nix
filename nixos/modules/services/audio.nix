@@ -25,9 +25,6 @@ in
   environment.systemPackages = with pkgs; [
     wireplumber
     pipewire
-    pamixer        # CLI volume
-    pavucontrol    # GUI volume
-    brightnessctl
     python-packages
   ];
   }

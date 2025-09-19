@@ -4,39 +4,16 @@
 {
   home.packages = with pkgs; [
     # Wayland Core
-    wl-clipboard
-    cliphist
-    grim
-    slurp
-    swappy
-    swww
-    brightnessctl
+    wl-clipboard cliphist grim slurp swappy swww brightnessctl
 
     # App Launcher / Bar
     # rofi-wayland # More modern than rofi
-    wlogout
-    swaynotificationcenter
+    wlogout swaynotificationcenter 
+
+    # Audio Control
+    pamixer pavucontrol
 
     # Theming & System Tools
-    nwg-look
-    btop
-    cava
-    inxi
-    duf
-    baobab # GNOME Disk Usage Analyzer
-  ];
-  
-  # programs.thunar = {
-  #   enable = true;
-  #   plugins = with pkgs.xfce; [
-  #     thunar-archive-plugin
-  #     thunar-volman
-  #   ];
-  # };
-
-  # For GUI password prompts (e.g., sudo in terminal)
-  # services.gpg-agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+    nwg-look btop cava inxi duf baobab
+  ];  
 }

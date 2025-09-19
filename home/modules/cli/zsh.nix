@@ -52,7 +52,7 @@
       share = true;
     };
 
-    initExtra = ''
+    initContent = ''
       # Custom Functions
       mkcd () {
         mkdir -p "$@" && cd "$_";
