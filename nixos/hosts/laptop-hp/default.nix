@@ -9,6 +9,7 @@
       ../../modules/system/bootloader.nix
       ../../modules/system/core.nix
       ../../modules/system/networking.nix
+      ../../modules/system/btrfs.nix
 
       # Modul Hardware
       ../../modules/hardware/nvidia.nix

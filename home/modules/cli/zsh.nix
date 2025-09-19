@@ -94,7 +94,7 @@
   # --- Declarative Environment Variables ---
   home.sessionVariables = {
     VOLTA_HOME = "$HOME/.volta";
-    ANDROID_HOME = "$HOME/Android/Sdk";
+    # ANDROID_HOME = "$HOME/Android/Sdk";
     PNPM_HOME = "$HOME/.local/share/pnpm";
     GOPATH = "$HOME/go";
     # GOROOT is managed by Nix automatically

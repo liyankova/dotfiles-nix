@@ -6,7 +6,7 @@
     # CLI
     ../modules/cli/tools.nix
     ../modules/cli/zsh.nix
-    ../modules/cli/git.nix
+    # ../modules/cli/git.nix
 
     # Desktop
     ../modules/desktop/hyprland-apps.nix

@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dotfiles-raw = {
       url = "github:liyankova/wallust-dotfiles";
       flake = false;
@@ -55,30 +59,20 @@
       specialArgs = { 
         inherit inputs; 
 	user = userConfigurations.liyan;
-	host = systemConfigurations.laptop-hp;
+	host = systemConfigurations."laptop-hp";
 	pkgsUnstable = pkgsUnstableFor systemConfigurations."laptop-hp".system;
       };
 
       modules = [
-        # ({ pkgs, ... }: {
-        #   nixpkgs.overlays = [ (import ./overlays/default.nix { pkgsUnstable = pkgsUnstable; }) ];
-        # })
+	./nixos/hosts/laptop-hp
         home-manager.nixosModules.home-manager
         {
+	  home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.liyan = import ./home/users/liyan.nix;
         }
-	./nixos/hosts/laptop-hp
 
-        # ({ config, pkgs, ... }: {
-        #   nixpkgs.overlays = [
-        #     (final: prev: {
-        #       unstable = pkgsUnstable;
-        #     })
-        #   ];
-        #   nixpkgs.config.allowUnfree = true;
-        # })
       ];
     };
     homeConfigurations."liyan" = inputs.home-manager.lib.homeManagerConfiguration {
