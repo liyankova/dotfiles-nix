@@ -11,6 +11,7 @@
     ../modules/dev/nodejs.nix
     ../modules/dev/rust.nix
     ../modules/dev/editors.nix
+    ../modules/system/fonts.nix
     # ../modules/dotfiles.nix
   ];
   home.username = "liyan";

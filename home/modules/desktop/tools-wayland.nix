@@ -13,7 +13,7 @@
     brightnessctl
 
     # App Launcher / Bar
-    rofi-wayland # More modern than rofi
+    # rofi-wayland # More modern than rofi
     wlogout
     swaynotificationcenter
 
@@ -26,17 +26,17 @@
     baobab # GNOME Disk Usage Analyzer
   ];
   
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  };
+  # programs.thunar = {
+  #   enable = true;
+  #   plugins = with pkgs.xfce; [
+  #     thunar-archive-plugin
+  #     thunar-volman
+  #   ];
+  # };
 
   # For GUI password prompts (e.g., sudo in terminal)
-  services.gpg-agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  # services.gpg-agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 }
