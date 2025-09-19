@@ -5,7 +5,8 @@
     ../modules/cli/tools.nix
     ../modules/cli/zsh.nix
     ../modules/desktop/hyprland-apps.nix
-
+    ../modules/desktop/apps.nix
+    ../modules/desktop/tools-wayland.nix
     ../modules/dev/go.nix
     ../modules/dev/nodejs.nix
     ../modules/dev/rust.nix
