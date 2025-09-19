@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }:
-
 {
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-  # boot.kernelPackages = pkgs.linuxPackages_lts;
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
