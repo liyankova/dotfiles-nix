@@ -5,6 +5,7 @@
     ../modules/cli/tools.nix
     ../modules/cli/zsh.nix
     ../modules/desktop/hyprland-apps.nix
+    # ../modules/dotfiles.nix
   ];
   home.username = "liyan";
   home.homeDirectory = "/home/liyan";

@@ -49,9 +49,9 @@
 
   in
   {
-    nixosConfigurations.laptop-hp = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."laptop-hp" = nixpkgs.lib.nixosSystem {
       # inherit system;
-      system = systemConfigurations.laptop-hp.system;
+      system = systemConfigurations."laptop-hp".system;
       specialArgs = { 
         inherit inputs; 
 	user = userConfigurations.liyan;
@@ -80,8 +80,9 @@
     homeConfigurations."liyan" = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = pkgsUnstableFor "x86_64-linux"; 
       extraSpecialArgs = {
+        inherit inputs;
         user = userConfigurations.liyan;
-        host = systemConfigurations.laptop-hp;
+        host = systemConfigurations."laptop-hp";
       };
       modules = [ ./home/users/liyan.nix ];
     };

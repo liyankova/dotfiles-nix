@@ -18,7 +18,7 @@
     ];
   };
   environment.systemPackages = with pkgs; [
-    git curl vim
+    git curl vim jq
     btrfs-progs
     home-manager
   ];
