@@ -18,5 +18,4 @@ in
     ANDROID_HOME = "${androidSdk}/share/android-sdk";
   };
 
-  programs.adb.enable = true;
 }

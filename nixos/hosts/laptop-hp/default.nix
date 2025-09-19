@@ -20,6 +20,7 @@
       ../../modules/desktop/sddm.nix
       ../../modules/desktop/hyprland.nix
       ../../modules/desktop/thunar.nix
+      ../../modules/desktop/steam.nix
       # (lib.mkIf host.hasNvidia ../../modules/hardware/nvidia.nix)
     ];
 

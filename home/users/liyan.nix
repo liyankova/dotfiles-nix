@@ -12,7 +12,7 @@
     ../modules/desktop/hyprland-apps.nix
     ../modules/desktop/apps.nix
     ../modules/desktop/tools-wayland.nix
-    ../modules/desktop/steam.nix
+
 
     # Dev
     ../modules/dev/go.nix

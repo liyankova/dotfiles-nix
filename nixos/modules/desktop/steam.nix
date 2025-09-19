@@ -9,7 +9,7 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  home.packages = with pkgs; [
+  environment.packages = with pkgs; [
     mangohud
     goverlay
     wine
