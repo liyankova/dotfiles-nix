@@ -28,7 +28,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.liyan = import ./home/liyan.nix;
+          home-manager.users.liyan = import ./home/users/liyan.nix;
         }
         ({ config, pkgs, ... }: {
           nixpkgs.overlays = [
