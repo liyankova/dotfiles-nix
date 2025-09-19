@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dotfiles-raw": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1755719359,
+        "narHash": "sha256-zxqLWsY4uY+LEmc9/D0d4ja5kxSBXmvERbm2apohE/E=",
+        "owner": "liyankova",
+        "repo": "wallust-dotfiles",
+        "rev": "fd0588572192f03bcf32b0c0f1c0ea84b1090645",
+        "type": "github"
+      },
+      "original": {
+        "owner": "liyankova",
+        "repo": "wallust-dotfiles",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -54,6 +70,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles-raw": "dotfiles-raw",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
