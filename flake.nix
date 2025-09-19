@@ -11,7 +11,7 @@
     
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable"; # HM akan pakai paket unstable
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -29,8 +29,7 @@
       specialArgs = { inherit inputs; }; # Berguna untuk nanti
 
       modules = [
-        # Ini adalah satu-satunya file yang berisi semua konfigurasi sistem Anda untuk saat ini
-        ./nixos.nix
+        ./nixos/hosts/laptop/default.nix 
 
         home-manager.nixosModules.home-manager
         {
