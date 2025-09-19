@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, user, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Jakarta"; 
@@ -8,7 +8,7 @@
     keyMap = "us";
   };
   programs.zsh.enable = true;
-  users.users.liyan = {
+  users.users.${user.username} = {
     isNormalUser = true;
     description = "Liyan";
     extraGroups = [ "wheel" ];

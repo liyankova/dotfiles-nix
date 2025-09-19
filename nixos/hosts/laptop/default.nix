@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, host, ... }:
 
 {
   imports =
@@ -9,10 +9,11 @@
       ../../modules/system/networking.nix
 
       # Modul Hardware
-      ../../modules/hardware/nvidia.nix
+      # ../../modules/hardware/nvidia.nix
       ../../modules/services/audio.nix
       ../../modules/desktop/sddm.nix
       ../../modules/desktop/hyprland.nix
+      (lib.mkIf host.hasNvidia ../../modules/hardware/nvidia.nix)
     ];
 	#  services.libinput.enable = true;
 	#  services.displayManager = {

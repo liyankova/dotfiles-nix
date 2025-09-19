@@ -13,6 +13,7 @@
     curl
     gh
     stow
+    kitty
 
     # Editors
     vim

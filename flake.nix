@@ -11,37 +11,74 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
   let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-    pkgsUnstable = import nixpkgs-unstable { 
+    userConfigurations = {
+      liyan = {
+        username = "liyan";
+	homeDirectory = "/home/liyan";
+	gitUsername = "liyankova";
+	gitEmail = "liyannkova@gmail.com";
+      };  
+      newuser = {
+        username = "newuser";
+	homeDirectory = "/home/newuser";
+	gitUsername = "newgitusername";
+	gitEmail = "user@git.com";
+      };
+    };
+    systemConfigurations = {
+      laptop-hp = {
+        system = "x86_64-linux";
+	hostname = "nixos";
+	hasNvidia = true;
+      };
+      server = {
+        system = "aarch64-linux";
+	hostname = "nixos-server";
+	hasNvidia = false;
+      };
+    };
+    # pkgs = import nixpkgs { inherit system; };
+    pkgsUnstableFor = system: import inputs.nixpkgs-unstable { 
       inherit system; 
-      config.allowUnfree = true; };
+      config.allowUnfree = true; 
+    };
+
   in
   {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = { inherit inputs pkgsUnstable; };
+    nixosConfigurations.laptop-hp = nixpkgs.lib.nixosSystem {
+      # inherit system;
+      system = systemConfigurations.laptop-hp.system;
+      specialArgs = { 
+        inherit inputs; 
+	user = userConfigurations.liyan;
+	host = systemConfigurations.laptop-hp;
+	pkgsUnstable = pkgsUnstableFor systemConfigurations.laptop.system;
+      };
 
       modules = [
-        ./nixos/hosts/laptop/default.nix 
+        ./nixos/hosts/laptop
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.liyan = import ./home/users/liyan.nix;
         }
-        ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [
-            (final: prev: {
-              unstable = pkgsUnstable;
-            })
-          ];
-          nixpkgs.config.allowUnfree = true;
-        })
+        # ({ config, pkgs, ... }: {
+        #   nixpkgs.overlays = [
+        #     (final: prev: {
+        #       unstable = pkgsUnstable;
+        #     })
+        #   ];
+        #   nixpkgs.config.allowUnfree = true;
+        # })
       ];
     };
-        homeConfigurations."liyan" = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsUnstable; 
+    homeConfigurations."liyan" = inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgsUnstableFor "x86_64-linux"; 
+      extraSpecialArgs = {
+        user = userConfigurations.liyan;
+        host = systemConfigurations.laptop-hp;
+      };
       modules = [ ./home/users/liyan.nix ];
     };
   };
