@@ -18,5 +18,6 @@
     # Editors
     vim
     neovim
+    oh-my-posh
   ];
 }

@@ -5,6 +5,11 @@
     ../modules/cli/tools.nix
     ../modules/cli/zsh.nix
     ../modules/desktop/hyprland-apps.nix
+
+    ../modules/dev/go.nix
+    ../modules/dev/nodejs.nix
+    ../modules/dev/rust.nix
+    ../modules/dev/editors.nix
     # ../modules/dotfiles.nix
   ];
   home.username = "liyan";
