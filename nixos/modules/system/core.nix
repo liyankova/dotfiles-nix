@@ -1,13 +1,11 @@
 { config, pkgs, ... }:
 {
-
-
+  nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Jakarta"; 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
-  
   };
   programs.zsh.enable = true;
   users.users.liyan = {
@@ -19,11 +17,9 @@
       tree
     ];
   };
-
   environment.systemPackages = with pkgs; [
-    vim git curl neovim tmux
-    wget btrfs-progs dmenu-wayland firefox stow
-    home-manager zsh gh
-
+    git curl vim
+    btrfs-progs
+    home-manager
   ];
 }

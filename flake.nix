@@ -1,7 +1,5 @@
-# ~/dotfiles-nix/flake.nix
 {
   description = "Konfigurasi NixOS Liyan (Tahap Awal)";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,12 +13,14 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-    pkgsUnstable = import nixpkgs-unstable { inherit system; };
+    pkgsUnstable = import nixpkgs-unstable { 
+      inherit system; 
+      config.allowUnfree = true; };
   in
   {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs pkgsUnstable; };
 
       modules = [
         ./nixos/hosts/laptop/default.nix 
