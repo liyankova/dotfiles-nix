@@ -14,7 +14,10 @@
     krita
     gimp
     inkscape
-
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-vcs-plugin
+    xfce.thunar-archive-plugin
     # Communication (using unstable for latest versions)
     # (pkgs.unstable.discord)
     # (pkgs.unstable.slack)
