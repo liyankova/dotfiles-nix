@@ -7,7 +7,13 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware.nix
+      ../../modules/system/bootloader.nix
+      ../../modules/system/core.nix
+      ../../modules/system/networking.nix
+
+      # Modul Hardware
+      ../../modules/hardware/nvidia.nix
     ];
 nixpkgs.config.nvidia.acceptLicense = true;
   # Use the systemd-boot EFI boot loader.
@@ -34,30 +40,30 @@ nixpkgs.config.nvidia.acceptLicense = true;
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.useDHCP = lib.mkDefault true;
   # Set your time zone.
-  time.timeZone = "Asia/Jakarta";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  };
-hardware.nvidia = {
-  # Gunakan driver legacy_470, yang paling umum untuk Maxwell/MX130
-  # Ini adalah kunci utamanya.
-  package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
-
-  # Gunakan modul kernel proprietary (bukan open-source)
-  open = false;
-
-  # Aktifkan modesetting. Penting untuk Wayland/Hyprland nanti.
-  modesetting.enable = true;
-};
+  # time.timeZone = "Asia/Jakarta";
+  #
+  # # Configure network proxy if necessary
+  # # networking.proxy.default = "http://user:password@proxy:port/";
+  # # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  #
+  # # Select internationalisation properties.
+  # i18n.defaultLocale = "en_US.UTF-8";
+  # console = {
+  #   font = "Lat2-Terminus16";
+  #   keyMap = "us";
+  # #   useXkbConfig = true; # use xkb.options in tty.
+  # };
+# hardware.nvidia = {
+#   # Gunakan driver legacy_470, yang paling umum untuk Maxwell/MX130
+#   # Ini adalah kunci utamanya.
+#   # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+#
+#   # Gunakan modul kernel proprietary (bukan open-source)
+#   open = false;
+#
+#   # Aktifkan modesetting. Penting untuk Wayland/Hyprland nanti.
+#   modesetting.enable = true;
+# };
 
   services.libinput.enable = true;
   services.displayManager = {
@@ -78,7 +84,7 @@ hardware.nvidia = {
 
 
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
   
 # boot.kernelPackages = pkgs.linuxPackages_lts;
@@ -101,13 +107,13 @@ hardware.nvidia = {
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.liyan = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
-  };
+  # users.users.liyan = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  #   packages = with pkgs; [
+  #     tree
+  #   ];
+  # };
 #   home-manager.users.liyan = {
 #     # Opsi dasar Home Manager
 #     home.username = "liyan";
@@ -141,12 +147,12 @@ hardware.nvidia = {
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    vim git curl neovim tmux # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget btrfs-progs dmenu-wayland firefox stow
-    home-manager zsh gh
-    # unstable.hyprland unstable.waybar unstable.kitty
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   vim git curl neovim tmux # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   wget btrfs-progs dmenu-wayland firefox stow
+  #   home-manager zsh gh
+  #   # unstable.hyprland unstable.waybar unstable.kitty
+  # ];
 
   programs = {
     hyprland = {
