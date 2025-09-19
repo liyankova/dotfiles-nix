@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
 
-  nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "Asia/Jakarta"; 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -10,7 +9,7 @@
     keyMap = "us";
   
   };
-
+  programs.zsh.enable = true;
   users.users.liyan = {
     isNormalUser = true;
     description = "Liyan";
