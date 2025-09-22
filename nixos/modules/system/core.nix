@@ -2,7 +2,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  programs.adb.enable = true;
   services.flatpak.enable = true;
 
   time.timeZone = "Asia/Jakarta"; 
@@ -15,6 +14,7 @@
 
   programs.zsh.enable = true;
 
+  programs.adb.enable = true;
   users.users.${user.username} = {
     isNormalUser = true;
     description = user.gitUsername;
