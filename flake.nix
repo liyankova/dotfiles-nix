@@ -1,4 +1,4 @@
-ys
+{
   description = "A highly structured and scalable NixOS configuration";
 
   inputs = {
@@ -10,6 +10,12 @@ ys
     };
     android-nixpkgs = {
       url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      # IMPORTANT: Match this branch to your nixpkgs channel
+      # url = "github:nix-community/nixvim/nixos-24.05"; 
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dotfiles-raw = {
@@ -92,7 +98,11 @@ ys
           inherit inputs;
           user = userConfig;
         };
-        modules = [ ./home/users/${username}.nix ];
+        modules = [ 
+	  inputs.nixvim/homeModules.nixvim
+	  ./home/users/${username}.nix 
+        ];
+
       }
     ) userConfigurations;
   };
