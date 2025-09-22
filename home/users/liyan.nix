@@ -20,6 +20,7 @@
     ../modules/dev/rust.nix
     ../modules/dev/editors.nix
     ../modules/dev/android.nix
+    ../modules/dev/neovim.nix
 
     # System
     ../modules/system/fonts.nix
