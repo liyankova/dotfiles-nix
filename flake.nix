@@ -1,4 +1,4 @@
-{
+ys
   description = "A highly structured and scalable NixOS configuration";
 
   inputs = {
