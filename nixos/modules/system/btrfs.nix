@@ -1,7 +1,8 @@
-# nixos/modules/system/btrfs.nix
-{ pkgs, user, ... }:
+{ config, lib, pkgs, host, user, ... }:
 
-{
+(lib.mkIf (lib.elem "btrfs" host.tags) {
+
+
   # Enable periodic file system scrubbing
   services.btrfs.autoScrub = {
     enable = true;
@@ -24,4 +25,4 @@
     TIMELINE_LIMIT_WEEKLY = 0;
     TIMELINE_LIMIT_MONTHLY = 0;
   };
-}
+})
