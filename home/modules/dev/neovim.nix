@@ -1,11 +1,10 @@
-# home/modules/development/neovim.nix
+# home/modules/dev/neovim.nix
 { pkgs, ... }:
 
 {
   programs.nixvim = {
     enable = true;
-    
-    # Basic editor options
+
     opts = {
       number = true;
       relativenumber = true;
@@ -14,28 +13,37 @@
       expandtab = true;
     };
 
-    # Set leader key
     globals.mapleader = " ";
 
-    # Example Plugins
     plugins = {
       lualine.enable = true;
-      # Add LSP support
+
       lsp = {
         enable = true;
         servers = {
-          # Example: For web development
-          tsserver.enable = true;
-          # Example: For Nix development
+          # Renamed from 'tsserver' and 'ts-ls'
+          ts_ls.enable = true;
+
           nil_ls.enable = true;
+          
+          # Add the missing package for dockerfile-language-server
+          # docker-ls.enable = true;
+          dockerls.enable = true;
         };
       };
     };
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-nix
+      gruvbox
+    ];
+
+    colorscheme = "gruvbox";
     
-    # Example Colorscheme
-    colorschemes.catppuccin = {
-      enable = true;
-      flavour = "mocha"; # frappe, macchiato, mocha
-    };
+    
+    # colorschemes.catppuccin = {
+    #   enable = true;
+    #   # Renamed from 'flavour'
+    #   settings.flavour = "mocha"; # frappe, macchiato, mocha
+    # };
   };
 }

@@ -16,7 +16,7 @@
       url = "github:nix-community/nixvim";
       # IMPORTANT: Match this branch to your nixpkgs channel
       # url = "github:nix-community/nixvim/nixos-24.05"; 
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     dotfiles-raw = {
       url = "github:liyankova/wallust-dotfiles";
@@ -70,18 +70,22 @@
         system = hostConfig.system;
         specialArgs = {
           inherit inputs;
-          user = userConfigurations.liyan; # Assuming liyan is the main user for now
+          user = userConfigurations.liyan; 
           host = hostConfig;
           pkgsUnstable = pkgsUnstable;
         };
         modules = [
-          ./nixos/hosts/${hostname} # Automatically points to the correct host folder
-
+          ./nixos/hosts/${hostname}
           home-manager.nixosModules.home-manager {
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${userConfigurations.liyan.username} = import ./home/users/liyan.nix;
+            home-manager.users.${userConfigurations.liyan.username} = {
+	      imports = [
+	        inputs.nixvim.homeManagerModules.nixvim
+	        ./home/users/liyan.nix
+	      ];
+	    };
           }
         ];
       }
@@ -99,7 +103,7 @@
           user = userConfig;
         };
         modules = [ 
-	  inputs.nixvim/homeModules.nixvim
+	  inputs.nixvim.homeManagerModules.nixvim
 	  ./home/users/${username}.nix 
         ];
 
