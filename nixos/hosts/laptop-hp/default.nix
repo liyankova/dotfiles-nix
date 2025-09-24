@@ -10,6 +10,7 @@
       ../../modules/system/core.nix
       ../../modules/system/networking.nix
       ../../modules/system/btrfs.nix
+      ../../modules/system/cache.nix
 
       # Modul Hardware
       ../../modules/hardware/nvidia.nix
