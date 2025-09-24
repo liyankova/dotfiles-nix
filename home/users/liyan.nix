@@ -1,9 +1,7 @@
-{ pkgs, ... }: 
+{ pkgs, inputs, khanelivim, ... }: 
 {
 
   imports = [
-
-    # CLI
     ../modules/cli/tools.nix
     ../modules/cli/zsh.nix
     # ../modules/cli/git.nix
@@ -20,7 +18,7 @@
     ../modules/dev/rust.nix
     ../modules/dev/editors.nix
     ../modules/dev/android.nix
-    ../modules/dev/neovim.nix
+    # ../modules/dev/neovim.nix
 
     # System
     ../modules/system/fonts.nix

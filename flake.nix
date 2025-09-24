@@ -18,10 +18,10 @@
       # url = "github:nix-community/nixvim/nixos-24.05"; 
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    dotfiles-raw = {
-      url = "github:liyankova/wallust-dotfiles";
-      flake = false;
-    };
+    # dotfiles-raw = {
+    #   url = "github:liyankova/wallust-dotfiles";
+    #   flake = false;
+    # };
   };
 
   outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
@@ -82,7 +82,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.${userConfigurations.liyan.username} = {
 	      imports = [
-	        inputs.nixvim.homeManagerModules.nixvim
+	        # inputs.nixvim.homeModules.nixvim
 	        ./home/users/liyan.nix
 	      ];
 	    };
@@ -102,8 +102,9 @@
           inherit inputs;
           user = userConfig;
         };
-        modules = [ 
-	  inputs.nixvim.homeManagerModules.nixvim
+        modules = [
+
+	  # inputs.nixvim.homeModules.nixvim
 	  ./home/users/${username}.nix 
         ];
 

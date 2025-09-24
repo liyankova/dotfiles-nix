@@ -31,13 +31,14 @@
           dockerls.enable = true;
         };
       };
+
     };
     extraPlugins = with pkgs.vimPlugins; [
       vim-nix
       gruvbox
     ];
 
-    colorscheme = "gruvbox";
+    colorschemes.gruvbox.enable = true;
     
     
     # colorschemes.catppuccin = {
